@@ -3,15 +3,28 @@ import ContactForm from './components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { Theme, TitleForm, TitleContact } from './App.styled';
-import contactData from '../src/contactData.json';
+// import contactData from '../src/contactData.json';
 
 export default class App extends Component {
   state = {
-    contacts: contactData,
+    contacts: [],
     filter: '',
   };
+  componentDidMount() {
+    const storageContacts = localStorage.getItem('contact');
+    const parsedContacts = JSON.parse(storageContacts) ?? [];
+    this.setState({
+      contacts: parsedContacts,
+    });
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (this.state.contacts.length !== prevState.contacts.length) {
+      const storageContacts = JSON.stringify(this.state.contacts);
+      localStorage.setItem('contact', storageContacts);
+    }
+  }
   onAddContact = newContact => {
-    console.log(newContact);
     const hasNameContact = this.state.contacts.some(
       contact => contact.name === newContact.name
     );
