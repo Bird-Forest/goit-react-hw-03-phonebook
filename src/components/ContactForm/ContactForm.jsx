@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { nanoid } from 'nanoid';
 import {
   Form,
   MarkField,
@@ -12,6 +13,7 @@ export default class ContactForm extends Component {
   state = {
     name: '',
     number: '',
+    id: '',
   };
   handleInputChange = event => {
     this.setState({
@@ -23,12 +25,14 @@ export default class ContactForm extends Component {
     const newContact = {
       name: this.state.name,
       number: this.state.number,
+      id: nanoid(),
     };
     this.props.onAddContact(newContact);
 
     this.setState({
       name: '',
       number: '',
+      id: '',
     });
   };
 

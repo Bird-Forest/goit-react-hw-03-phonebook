@@ -10,6 +10,7 @@ export default class App extends Component {
     contacts: [],
     filter: '',
   };
+
   componentDidMount() {
     const storageContacts = localStorage.getItem('contact');
     const parsedContacts = JSON.parse(storageContacts) ?? [];
@@ -24,27 +25,29 @@ export default class App extends Component {
       localStorage.setItem('contact', storageContacts);
     }
   }
+
   onAddContact = newContact => {
     const hasNameContact = this.state.contacts.some(
       contact => contact.name === newContact.name
     );
-
     if (hasNameContact) {
       alert(`${newContact.name} is already in contacts`);
       return;
     }
-
     this.setState(prevState => {
       return {
         contacts: [newContact, ...prevState.contacts],
       };
     });
   };
+
   onDeleteContact = contactId => {
+    console.log(this.state.contacts);
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
+
   onInputContact = event => {
     const searchContact = event.target.value.toLowerCase();
     this.setState({ filter: searchContact });
@@ -56,6 +59,7 @@ export default class App extends Component {
   //   );
   //   return filterArr;
   // };
+
   findContact = () => {
     return this.state.contacts.filter(({ name }) =>
       name.toLowerCase().includes(this.state.filter)
