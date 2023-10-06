@@ -53,13 +53,6 @@ export default class App extends Component {
     this.setState({ filter: searchContact });
   };
 
-  // findContact = () => {
-  //   const filterArr = this.state.contacts.filter(({ name }) =>
-  //     name.toLowerCase().includes(this.state.filter)
-  //   );
-  //   return filterArr;
-  // };
-
   findContact = () => {
     return this.state.contacts.filter(({ name }) =>
       name.toLowerCase().includes(this.state.filter)

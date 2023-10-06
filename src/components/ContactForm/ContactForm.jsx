@@ -7,7 +7,6 @@ import {
   ContactNumber,
   BtnAdd,
 } from './ContactForm.styled';
-// import { number } from 'prop-types';
 
 export default class ContactForm extends Component {
   state = {
@@ -62,28 +61,3 @@ export default class ContactForm extends Component {
     );
   }
 }
-
-// import { Component } from 'react';
-
-// export class ContactForm extends Component {
-//   state = {};
-//   render() {
-//     return (
-//       <form action="">
-//         <label for="exampleInputEmail1" class="form-label">
-//           Email address
-//         </label>
-//         <input
-//           type="text"
-//           name="name"
-//           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-//           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-//           required
-//         />
-//         <button type="submit" class="btn btn-primary">
-//           Submit
-//         </button>
-//       </form>
-//     );
-//   }
-// }
